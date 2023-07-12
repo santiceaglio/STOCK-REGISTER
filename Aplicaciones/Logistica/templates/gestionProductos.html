@@ -1,14 +1,39 @@
+
+
 {% extends "./base.html" %}
 
 {% block title %} Gestion de Productos {% endblock %}
 
 {% block body %}
 <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
-
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+        <h4>Product Management</h3>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                    <input type="text" id="txtCode" name="txtCode" class="form-control" placeholder="Code" minlength="6" maxlength="6"  required>
+                    </div>
+                    <div class="form-group">
+                    <input type="text" id="txtName" name="txtName" class="form-control" placeholder="Product Name"  maxlength="50"  required>
+                    </div>
+                    <div class="form-group">
+                    <input type="text" id="numQuantity" name="numQuantity" class="form-control" placeholder="Quantity" min="1" max="10000"  required>
+                    </div>
+                    <div class="form-group">
+                    <input type="text" id="numPrice" name="numPrice" class="form-control" placeholder="Price"  min="1" max="100000"  required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-success  text-white">Add</button>
+                        </div>
+                    
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-6">
-        <div class="table-responsive">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-8">
+        <h4>Product List</h4>
+        <div class="table-responsive py-4">
             <table class="table table-striped">
                 <thead>
                     <tr>

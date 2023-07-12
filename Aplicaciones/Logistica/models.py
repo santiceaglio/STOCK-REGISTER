@@ -13,6 +13,6 @@ class Producto(models.Model):
         texto = '{0} ({1})'
         return texto.format(self.nombre, self.cantidad)
     
-    def save(self, *args, **kwargs):
-        self.precio = self.cantidad * 10  # Multiplica el campo cantidad por un factor (en este caso, 10)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.precio = self.cantidad * 10  # Multiplica el campo cantidad por un factor (en este caso, 10)
+    #     super().save(*args, **kwargs)
