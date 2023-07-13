@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Producto
 
 # # Create your views here.
@@ -16,3 +16,35 @@ def home(request):
         productosListados = Producto.objects.all()
     
     return render(request, "gestionProductos.html", {"productos": productosListados})
+
+def registrarProducto(request):
+    codigo=request.POST['txtCode']
+    nombre=request.POST['txtName']
+    precio=request.POST['numPrice']
+    cantidad=request.POST['numQuantity']
+
+    producto= Producto.objects.create(codigo=codigo, nombre=nombre, precio=precio, cantidad=cantidad)
+    return redirect('/')
+
+def edicionProducto(request, codigo):
+    producto = Producto.objects.get(codigo=codigo)
+    return render(request, "editarProducto.html", {"producto": producto})
+
+def editarProducto(request):
+    codigo=request.POST['txtCode']
+    nombre=request.POST['txtName']
+    precio=request.POST['numPrice']
+    cantidad=request.POST['numQuantity']
+
+    producto = Producto.objects.get(codigo=codigo)
+    producto.nombre = nombre
+    producto.cantidad = cantidad
+    producto.save()
+
+    return redirect('/')
+
+
+def eliminarProducto(request, codigo):
+    producto = Producto.objects.get(codigo=codigo)
+    producto.delete()
+    return redirect('/')

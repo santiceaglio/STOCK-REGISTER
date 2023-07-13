@@ -10,7 +10,7 @@
         <h4>Product Management</h3>
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="/registrarProducto/" method="POST"> {% csrf_token %}
                     <div class="form-group py-2">
                     <input type="text" id="txtCode" name="txtCode" class="form-control" placeholder="Code" minlength="6" maxlength="6"  required>
                     </div>
@@ -46,6 +46,7 @@
                         <th>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th colspan="2">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +56,8 @@
                         <td>{{p.nombre}}</td>
                         <td>{{p.precio}}</td>
                         <td>{{p.cantidad}}</td>
+                        <td><a href="edicionProducto/{{p.codigo}}" class="btn btn-info text-white">Edit</a></td>
+                        <td><a href="eliminarProducto/{{p.codigo}}" class="btn btn-danger">Delete</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -64,3 +67,4 @@
     
 </div>
 {% endblock %}
+
