@@ -7,7 +7,7 @@
 {% block body %}
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-        <h4>Product Management</h3>
+        <h4>Product Entry</h3>
         <div class="card">
             <div class="card-body">
                 <form action="/registrarProducto/" method="POST"> {% csrf_token %}
@@ -33,7 +33,7 @@
     </div>
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-8">
         <div class="d-flex justify-content-between align-items-center">
-            <h4 class="mb-0">Product List</h4>
+            <h4 class="mb-0">List</h4>
             <div class="d-flex">
                 <a href="/" class="btn btn-primary">Refresh</a>
             </div>
@@ -46,7 +46,7 @@
                         <th>Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th colspan="2">Opciones</th>
+                        <th colspan="2">Options</th>
                     </tr>
                 </thead>
                 <tbody>
