@@ -6,7 +6,14 @@ class Producto(models.Model):
     codigo = models.CharField(primary_key=True, max_length=6)
     nombre = models.CharField(max_length=50)
     cantidad = models.PositiveSmallIntegerField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    # precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    precio = models.CharField(max_length=15, default='0')
+
+    
+
+    # def save(self, *args, **kwargs):
+    #     self.clean()
+    #     super().save(*args, **kwargs)
 
 
     def __str__(self):
