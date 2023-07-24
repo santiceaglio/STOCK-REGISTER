@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import dj_database_url
+import os
 
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7c7+mw$8-15fu2#(&4yw2$6c&&73r1jw+$#3j_e6e88ewv_-ix'
+# SECRET_KEY = 'django-insecure-7c7+mw$8-15fu2#(&4yw2$6c&&73r1jw+$#3j_e6e88ewv_-ix'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ") 
 
 
 # Application definition
@@ -80,6 +86,11 @@ DATABASES = {
         'NAME': 'Stock_Register.db',
     }
 }
+
+database_url = os.environ.get("DATABASE_URL")
+# DATABASES['default'] = dj_database_url.parse("postgres://stock_django_render_user:dqszgSaH5P6OWHcs00pi8PQ2Mf2DMZYy@dpg-cithghp5rnuhcnovp8eg-a.oregon-postgres.render.com/stock_django_render")
+DATABASES['default'] = dj_database_url.parse(database_url)
+
 
 
 # Password validation
